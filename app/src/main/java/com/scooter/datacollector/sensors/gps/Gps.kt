@@ -5,6 +5,7 @@ import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
+import android.widget.Toast
 import com.scooter.datacollector.domain.models.GpsData
 import com.scooter.datacollector.domain.sensors.IGps
 
@@ -17,7 +18,7 @@ class Gps(private val context: Context) : IGps, LocationListener {
         try {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000L, 0f, this)
         } catch(ex: SecurityException) {
-            // Обработка исключения
+            Toast.makeText(context, "Отсутсвует разрешение на использование GPS!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -25,7 +26,5 @@ class Gps(private val context: Context) : IGps, LocationListener {
         gpsData = GpsData(location.speed.toDouble(), location.latitude, location.longitude)
     }
 
-    override fun getGpsData(): GpsData {
-        return gpsData
-    }
+    override fun getGpsData() = gpsData
 }
