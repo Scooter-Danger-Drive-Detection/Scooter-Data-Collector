@@ -45,6 +45,11 @@ class FrameDataCollector(
             gyroscopeData = gyroscope.getRotationData()
         )
         frameRepository.saveFrame(frame)
+
+        currentFrame++
+        for(callback in frameUpdatedCallbacks){
+            callback(frame)
+        }
     }
 
     override fun stopFrameDataCollection(){
