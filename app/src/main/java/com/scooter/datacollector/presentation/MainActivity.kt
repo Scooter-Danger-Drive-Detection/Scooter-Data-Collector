@@ -1,7 +1,8 @@
-package com.scooter.datacollector
+package com.scooter.datacollector.presentation
 
 import android.app.Activity
 import android.os.Bundle
+import com.scooter.datacollector.R
 
 class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
