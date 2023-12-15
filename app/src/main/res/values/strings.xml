@@ -1,5 +1,32 @@
 <resources>
     <string name="app_name">ScooterDataCollector</string>
 
-    <string name="activity_main.start_session_button.text">Start Session</string>>
+    
+    <string name="activity_main.start_session_button.text">Start Session</string>
+    <string name="activity_main.frame_info_caption">Frame data</string>
+    
+    <string name="activity_main.id_section_caption">Id:</string>
+    <string name="activity_main.session_id_text">SessionId:</string>
+    <string name="activity_main.frame_id_text">FrameId:</string>
+    <string name="activity_main.last_frame_is_text">LastFrameId:</string>
+    
+    <string name="activity_main.time_section_caption">Time:</string>
+    
+    <string name="activity_main.gps_section_caption">GPS:</string>
+    <string name="activity_main.speed_text">Speed:</string>
+    <string name="activity_main.longitude_text">Longitude:</string>
+    <string name="activity_main.latitude_text">Latitude:</string>
+    
+    <string name="activity_main.accelerometer_section_caption">Accelerometer:</string>
+    <string name="activity_main.full_acceleration_x_text">Full acceleration X axis:</string>
+    <string name="activity_main.full_acceleration_y_text">Full acceleration Y axis:</string>
+    <string name="activity_main.full_acceleration_z_text">Full acceleration Z axis:</string>
+    <string name="activity_main.gravity_x_text">Gravity acceleration X axis:</string>
+    <string name="activity_main.gravity_y_text">Gravity acceleration Y axis:</string>
+    <string name="activity_main.gravity_z_text">Gravity acceleration Z axis:</string>
+
+<!--    TODO Gyroscope variable description -->
+
+    <string name="activity_main.gyroscope_section_caption">Gyroscope:</string>
+    
 </resources>
