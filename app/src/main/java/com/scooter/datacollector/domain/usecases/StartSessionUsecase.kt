@@ -1,7 +1,9 @@
 package com.scooter.datacollector.domain.usecases
 
-class StartSessionUsecase {
-    public fun execute(){
+import com.scooter.datacollector.domain.SessionController
+import com.scooter.datacollector.domain.models.RideMode
 
-    }
+class StartSessionUsecase(private val sessionController: SessionController) {
+    public fun execute(rideMode: RideMode) = sessionController.startSession(rideMode)
+
 }
