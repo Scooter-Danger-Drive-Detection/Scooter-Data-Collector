@@ -7,14 +7,13 @@
     tools:context=".presentation.MainActivity">
 
     <Button
-        android:id="@+id/startSessionBtn"
+        android:id="@+id/start_session_button"
         style="@style/header_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
         android:text="@string/activity_main.start_session_button.text"
-        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
@@ -92,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="@string/activity_main.last_frame_is_text"
+                android:text="@string/activity_main.previous_frame_is_text"
                 app:layout_constraintStart_toStartOf="@+id/frame_id_text"
                 app:layout_constraintTop_toBottomOf="@+id/frame_id_text" />
 
@@ -350,7 +349,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/rotation_x_text" />
 
             <TextView
-                android:id="@+id/retation_y_value"
+                android:id="@+id/rotation_y_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -431,5 +430,16 @@
                 app:layout_constraintStart_toEndOf="@+id/angle_speed_z_text" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
+
+    <Button
+        android:id="@+id/stop_session_button"
+        style="@style/header_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:text="@string/activity_main.stop_session_button.text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

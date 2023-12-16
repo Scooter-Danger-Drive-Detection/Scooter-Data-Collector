@@ -1,5 +1,7 @@
-package com.scooter.datacollector.domain
+package com.scooter.datacollector.framecollector
 
+import com.scooter.datacollector.domain.IFrameDataCollector
+import com.scooter.datacollector.domain.ISessionController
 import com.scooter.datacollector.domain.models.Frame
 import com.scooter.datacollector.domain.repositories.IFrameRepository
 import com.scooter.datacollector.domain.sensors.IAccelerometer

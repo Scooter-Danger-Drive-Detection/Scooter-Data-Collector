@@ -1,11 +1,13 @@
-package com.scooter.datacollector.domain
+package com.scooter.datacollector.sessionstate
 
+import com.scooter.datacollector.domain.ISessionController
 import com.scooter.datacollector.domain.auth.IAuth
 import com.scooter.datacollector.domain.models.RideMode
 import com.scooter.datacollector.domain.models.Session
 import com.scooter.datacollector.domain.repositories.ISessionRepository
 
-class SessionController(private val auth: IAuth, private val sessionRepository: ISessionRepository) : ISessionController {
+class SessionController(private val auth: IAuth, private val sessionRepository: ISessionRepository) :
+    ISessionController {
     private var currentSession: Session? = null
 
     override fun isSessionStarted(): Boolean =

@@ -3,12 +3,13 @@
 
     
     <string name="activity_main.start_session_button.text">Start Session</string>
+    <string name="activity_main.stop_session_button.text">Stop session</string>
     <string name="activity_main.frame_info_caption">Frame data</string>
     
     <string name="activity_main.id_section_caption">Id:</string>
     <string name="activity_main.session_id_text">Session Id:</string>
     <string name="activity_main.frame_id_text">Frame Id:</string>
-    <string name="activity_main.last_frame_is_text">Previous frame Id:</string>
+    <string name="activity_main.previous_frame_is_text">Previous frame Id:</string>
     
     <string name="activity_main.time_section_caption">Time:</string>
     
