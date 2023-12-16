@@ -1,5 +1,6 @@
 package com.scooter.datacollector.framecollector
 
+import android.content.Context
 import com.scooter.datacollector.domain.IFrameDataCollector
 import com.scooter.datacollector.domain.ISessionController
 import com.scooter.datacollector.domain.models.Frame
@@ -9,25 +10,28 @@ import com.scooter.datacollector.domain.sensors.IGps
 import com.scooter.datacollector.domain.sensors.IGyroscope
 import java.util.Date
 import java.util.Timer
+import java.util.logging.Handler
 import kotlin.concurrent.timerTask
 import kotlin.collections.MutableList
 
 class FrameDataCollector(
+    private val context: Context,
     private val accelerometer: IAccelerometer,
     private val gps: IGps,
     private val gyroscope: IGyroscope,
-    private val sessionController: ISessionController,
     private val frameRepository: IFrameRepository
 ) : IFrameDataCollector {
     companion object{
-        const val DELAY_BETWEEN_FRAMES_MS: Long = 50L
+        const val DELAY_BETWEEN_FRAMES_MS: Long = 100L
     }
 
     private var timer: Timer? = null
     private var currentFrame: Int = 0
+    private var currentSessionId = 0
     private val frameUpdatedCallbacks: MutableList<(Frame) -> Unit> = mutableListOf()
-    override fun startFrameDataCollection(){
+    override fun startFrameDataCollection(sessionId: Int){
         currentFrame = 0
+        currentSessionId = sessionId
 
         timer = Timer(true)
         val task = timerTask {
@@ -39,7 +43,7 @@ class FrameDataCollector(
     private fun collectFrameData(){
         val frame: Frame = Frame(
             frameId = currentFrame,
-            sessionId = sessionController.getCurrentSession().id,
+            sessionId = currentSessionId,
             lastFrameId = currentFrame - 1,
             time = Date().time,
             gps = gps.getGpsData(),
@@ -50,7 +54,9 @@ class FrameDataCollector(
 
         currentFrame++
         for(callback in frameUpdatedCallbacks){
-            callback(frame)
+            android.os.Handler(context.mainLooper).post{
+                callback(frame)
+            }
         }
     }
 

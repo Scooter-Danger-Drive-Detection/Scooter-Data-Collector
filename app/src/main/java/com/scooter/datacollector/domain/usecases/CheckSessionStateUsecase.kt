@@ -1,7 +1,8 @@
 package com.scooter.datacollector.domain.usecases
 
-import com.scooter.datacollector.sessionstate.SessionController
+import com.scooter.datacollector.domain.ISessionController
 
-class CheckSessionStateUsecase(private val sessionController: SessionController) {
-    public fun execute() = true // TODO
+class CheckSessionStateUsecase(private val sessionController: ISessionController) {
+    public fun execute() = sessionController.isSessionStarted()
+
 }

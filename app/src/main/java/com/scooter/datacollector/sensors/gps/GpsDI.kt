@@ -5,5 +5,4 @@ import org.koin.dsl.module
 
 var GpsDI = module {
     single<IGps> { Gps(get()) }
-
 }

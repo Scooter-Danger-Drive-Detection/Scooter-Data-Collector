@@ -19,9 +19,9 @@
     <string name="activity_main.latitude_text">Latitude:</string>
     
     <string name="activity_main.accelerometer_section_caption">Accelerometer:</string>
-    <string name="activity_main.full_acceleration_x_text">Full acceleration X axis:</string>
-    <string name="activity_main.full_acceleration_y_text">Full acceleration Y axis:</string>
-    <string name="activity_main.full_acceleration_z_text">Full acceleration Z axis:</string>
+    <string name="activity_main.full_acceleration_x_text">Linear acceleration X axis:</string>
+    <string name="activity_main.full_acceleration_y_text">Linear acceleration Y axis:</string>
+    <string name="activity_main.full_acceleration_z_text">Linear acceleration Z axis:</string>
     <string name="activity_main.gravity_x_text">Gravity acceleration X axis:</string>
     <string name="activity_main.gravity_y_text">Gravity acceleration Y axis:</string>
     <string name="activity_main.gravity_z_text">Gravity acceleration Z axis:</string>

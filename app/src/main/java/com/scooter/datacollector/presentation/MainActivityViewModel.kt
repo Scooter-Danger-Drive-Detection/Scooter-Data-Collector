@@ -21,7 +21,7 @@ class MainActivityViewModel : ViewModel() {
     private val frameUpdateUsecase : FrameUpdateUsecase by inject(FrameUpdateUsecase::class.java)
 
     init {
-        // TODO frameUpdateUsecase.subscribe {frame -> updateCurrentFrame(frame)}
+        frameUpdateUsecase.subscribe {frame -> updateCurrentFrame(frame)}
         _currentFrame.value = Frame(
             frameId = 0,
             sessionId = 0,
@@ -30,7 +30,6 @@ class MainActivityViewModel : ViewModel() {
             gps = GpsData(speed = 0.0, latitude = 0.0, longitude = 0.0),
             accelerometer = AccelerationData(0.0,0.0,0.0,0.0,0.0,0.0),
             gyroscopeData = GyroscopeData(FloatArray(9),0.0,0.0,0.0)
-
         )
     }
 

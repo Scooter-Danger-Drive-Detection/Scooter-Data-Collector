@@ -1,20 +1,35 @@
 package com.scooter.datacollector.presentation
 
+import android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
+import android.Manifest.permission.ACCESS_COARSE_LOCATION
+import android.Manifest.permission.ACCESS_FINE_LOCATION
+import android.content.pm.PackageManager.PERMISSION_GRANTED
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.contract.ActivityResultContract
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.scooter.datacollector.R
 import com.scooter.datacollector.domain.models.Frame
 import com.scooter.datacollector.domain.models.RideMode
 import com.scooter.datacollector.domain.usecases.CheckSessionStateUsecase
+import com.scooter.datacollector.domain.usecases.EndSessionUsecase
 import com.scooter.datacollector.domain.usecases.StartSessionUsecase
 import org.koin.android.ext.android.get
-import org.koin.java.KoinJavaComponent.get
+import java.lang.Math.round
+import kotlin.math.roundToInt
 
 class MainActivity : AppCompatActivity() {
+    companion object{
+        private const val MAIN_ACTIVITY_PERMISSION_REQUEST_CODE = 1
+    }
+
     private lateinit var viewModel: MainActivityViewModel
 
     private lateinit var sessionIdText: TextView
@@ -42,9 +57,18 @@ class MainActivity : AppCompatActivity() {
     private lateinit var startSessionButton: Button
     private lateinit var stopSessionButton: Button
 
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()){
+            isGranted: Boolean ->
+                if (!isGranted){
+                    Toast.makeText(this, "You need to allow all permissions!", Toast.LENGTH_SHORT).show()
+                }
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        checkAndUpdatePermissions()
 
         sessionIdText = findViewById(R.id.session_id_value)
         frameIdText = findViewById(R.id.frame_id_value)
@@ -82,24 +106,26 @@ class MainActivity : AppCompatActivity() {
         startSessionButton = findViewById(R.id.start_session_button)
         startSessionButton.setOnClickListener {
             val startSessionUsecase: StartSessionUsecase = get()
-            //TODO startSessionUsecase.execute()
+            startSessionUsecase.execute(getRideMode())
+            updateButtonsState()
         }
 
         stopSessionButton = findViewById(R.id.stop_session_button)
-        //TODO listener
+        stopSessionButton.setOnClickListener {
+            val endSessionUsecase: EndSessionUsecase = get()
+            endSessionUsecase.execute()
+            updateButtonsState()
+        }
 
         viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
         viewModel.currentFrame.observe(this){
             frame -> updateShowingFrame(frame)
         }
-
-
-        updateButtonsState()
     }
 
     private fun updateButtonsState(){
-        //val checkSession: CheckSessionStateUsecase = get(CheckSessionStateUsecase::class.java)
-        val isSessionGoing = false //TODO checkSession.execute()
+        val checkSession: CheckSessionStateUsecase = get()
+        val isSessionGoing = checkSession.execute()
         startSessionButton.isEnabled = !isSessionGoing
         stopSessionButton.isEnabled = isSessionGoing
     }
@@ -136,4 +162,22 @@ class MainActivity : AppCompatActivity() {
             return RideMode.UNSAFE_MANY_PEOPLE
         throw Exception("Undefined RideMode!!")
     }
+
+    private fun checkAndUpdatePermissions(){
+        val notAllowedPermissions = mutableListOf<String>()
+        if(checkSelfPermission(ACCESS_COARSE_LOCATION) != PERMISSION_GRANTED){
+            notAllowedPermissions.add(ACCESS_COARSE_LOCATION)
+        }
+        if(checkSelfPermission(ACCESS_FINE_LOCATION) != PERMISSION_GRANTED){
+            notAllowedPermissions.add(ACCESS_FINE_LOCATION)
+        }
+        if(checkSelfPermission(ACCESS_BACKGROUND_LOCATION) != PERMISSION_GRANTED && Build.VERSION.SDK_INT >= 29){
+            notAllowedPermissions.add(ACCESS_BACKGROUND_LOCATION)
+        }
+
+        for(index in notAllowedPermissions.indices)
+            requestPermissionLauncher.launch(notAllowedPermissions[index])
+    }
+
+
 }

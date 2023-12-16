@@ -319,80 +319,92 @@
                 app:layout_constraintStart_toStartOf="@+id/gyroscope_section_caption"
                 app:layout_constraintTop_toBottomOf="@+id/gyroscope_section_caption" />
 
-            <TextView
-                android:id="@+id/rotation_delta_value_0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_main.value_placeholder"
-                app:layout_constraintBottom_toTopOf="@+id/rotation_delta_value_3"
-                app:layout_constraintStart_toStartOf="@+id/rotation_delta_value_3" />
-
-            <TextView
-                android:id="@+id/rotation_delta_value_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_main.value_placeholder"
-                app:layout_constraintBottom_toBottomOf="@+id/rotation_delta_value_0"
-                app:layout_constraintStart_toStartOf="@+id/rotation_delta_value_4" />
-
-            <TextView
-                android:id="@+id/rotation_delta_value_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_main.value_placeholder"
-                app:layout_constraintBottom_toTopOf="@+id/rotation_delta_value_4"
-                app:layout_constraintStart_toStartOf="@+id/rotation_delta_value_5" />
-
-            <TextView
-                android:id="@+id/rotation_delta_value_3"
+            <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@string/activity_main.value_placeholder"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="@+id/rotation_delta_text"
-                app:layout_constraintStart_toEndOf="@+id/rotation_delta_text" />
+                app:layout_constraintStart_toEndOf="@+id/rotation_delta_text"
+                app:layout_constraintTop_toTopOf="@+id/rotation_delta_text">
 
-            <TextView
-                android:id="@+id/rotation_delta_value_4"
+                <TextView
+                    android:id="@+id/rotation_delta_value_0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_main.value_placeholder" />
+
+                <TextView
+                    android:id="@+id/rotation_delta_value_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_main.value_placeholder" />
+
+                <TextView
+                    android:id="@+id/rotation_delta_value_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_main.value_placeholder" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@string/activity_main.value_placeholder"
-                app:layout_constraintBottom_toBottomOf="@+id/rotation_delta_value_3"
-                app:layout_constraintStart_toEndOf="@+id/rotation_delta_value_3" />
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout"
+                app:layout_constraintTop_toTopOf="@+id/linearLayout">
 
-            <TextView
-                android:id="@+id/rotation_delta_value_5"
+                <TextView
+                    android:id="@+id/rotation_delta_value_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_main.value_placeholder" />
+
+                <TextView
+                    android:id="@+id/rotation_delta_value_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_main.value_placeholder" />
+
+                <TextView
+                    android:id="@+id/rotation_delta_value_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_main.value_placeholder" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@string/activity_main.value_placeholder"
-                app:layout_constraintBottom_toBottomOf="@+id/rotation_delta_value_4"
-                app:layout_constraintStart_toEndOf="@+id/rotation_delta_value_4" />
+                android:orientation="vertical"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+                app:layout_constraintTop_toTopOf="@+id/linearLayout2">
 
-            <TextView
-                android:id="@+id/rotation_delta_value_6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_main.value_placeholder"
-                app:layout_constraintStart_toStartOf="@+id/rotation_delta_value_3"
-                app:layout_constraintTop_toBottomOf="@+id/rotation_delta_value_3" />
+                <TextView
+                    android:id="@+id/rotation_delta_value_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_main.value_placeholder" />
 
-            <TextView
-                android:id="@+id/rotation_delta_value_7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_main.value_placeholder"
-                app:layout_constraintBottom_toBottomOf="@+id/rotation_delta_value_6"
-                app:layout_constraintStart_toStartOf="@+id/rotation_delta_value_4" />
+                <TextView
+                    android:id="@+id/rotation_delta_value_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_main.value_placeholder" />
 
-            <TextView
-                android:id="@+id/rotation_delta_value_8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_main.value_placeholder"
-                app:layout_constraintBottom_toBottomOf="@+id/rotation_delta_value_7"
-                app:layout_constraintStart_toStartOf="@+id/rotation_delta_value_5" />
+                <TextView
+                    android:id="@+id/rotation_delta_value_8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_main.value_placeholder" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/angle_speed_x_text"
@@ -470,6 +482,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="5dp"
+        android:enabled="false"
         android:text="@string/activity_main.stop_session_button.text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -12,7 +12,7 @@ import kotlin.math.sqrt
 class AngleSpeedSensor(private val context: Context) : SensorEventListener {
     private val sensorManager = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
 
-    private lateinit var angleSpeedData: AngleSpeedData
+    private var angleSpeedData: AngleSpeedData = AngleSpeedData(0.0,0.0,0.0)
     private var rotationDelta: RotationData = RotationData(FloatArray(9){0f})
 
     private val NS2S = 1.0/1000000000.0
