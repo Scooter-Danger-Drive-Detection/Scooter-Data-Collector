@@ -7,5 +7,5 @@ data class Frame(
     val time: Long,
     val gps : GpsData,
     val accelerometer : AccelerationData,
-    val gyroscopeData: RotationData
+    val gyroscopeData: GyroscopeData
 )
