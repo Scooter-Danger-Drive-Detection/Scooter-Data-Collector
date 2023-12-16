@@ -1,7 +1,7 @@
 package com.scooter.datacollector.domain.models
 
 data class AccelerationData(
-    val LinearAccelerationX: Double,
-    val LinearAccelerationY: Double,
-    val LinearAccelerationZ: Double
+    val linearAccelerationX: Double,
+    val linearAccelerationY: Double,
+    val linearAccelerationZ: Double
 )
