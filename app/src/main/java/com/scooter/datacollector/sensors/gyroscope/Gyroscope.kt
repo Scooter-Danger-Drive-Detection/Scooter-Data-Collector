@@ -11,6 +11,7 @@ import android.hardware.SensorManager
 class Gyroscope(private val context: Context) : IGyroscope, SensorEventListener {
     private val sensorManager = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
 
+    private var previousData = RotationData(0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
     private var rotationData = RotationData(0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
 
     init {
@@ -32,8 +33,13 @@ class Gyroscope(private val context: Context) : IGyroscope, SensorEventListener 
     override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {
         // handle accuracy changes
     }
-
+    // return angle delta from last request and angle speed now
     override fun getRotationData(): RotationData {
-        return rotationData
+        val result = RotationData(rotationData.rotationDeltaX - previousData.rotationDeltaX,
+                                  rotationData.rotationDeltaY - previousData.rotationDeltaY,
+                                  rotationData.rotationDeltaZ - previousData.rotationDeltaZ,
+                                              rotationData.angleSpeedX, rotationData.angleSpeedY, rotationData.angleSpeedZ)
+        previousData = rotationData;
+        return result;
     }
 }
