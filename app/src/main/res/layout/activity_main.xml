@@ -31,23 +31,404 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/frame_data_caption"
                 style="@style/header_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
                 android:text="@string/activity_main.frame_info_caption"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/id_section_caption"
+                style="@style/header_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/activity_main.id_section_caption"
+                app:layout_constraintStart_toStartOf="@+id/frame_data_caption"
+                app:layout_constraintTop_toBottomOf="@+id/frame_data_caption" />
+
+            <TextView
+                android:id="@+id/session_id_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/activity_main.session_id_text"
+                app:layout_constraintStart_toStartOf="@+id/id_section_caption"
+                app:layout_constraintTop_toBottomOf="@+id/id_section_caption" />
+
+            <TextView
+                android:id="@+id/session_id_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:text="TextView"
-                tools:layout_editor_absoluteX="29dp"
-                tools:layout_editor_absoluteY="77dp" />
+                app:layout_constraintBottom_toBottomOf="@+id/session_id_text"
+                app:layout_constraintStart_toEndOf="@+id/session_id_text" />
+
+            <TextView
+                android:id="@+id/frame_id_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/activity_main.frame_id_text"
+                app:layout_constraintStart_toStartOf="@+id/session_id_text"
+                app:layout_constraintTop_toBottomOf="@+id/session_id_text" />
+
+            <TextView
+                android:id="@+id/frame_id_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/frame_id_text"
+                app:layout_constraintStart_toEndOf="@+id/frame_id_text" />
+
+            <TextView
+                android:id="@+id/previous_frame_id_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/activity_main.last_frame_is_text"
+                app:layout_constraintStart_toStartOf="@+id/frame_id_text"
+                app:layout_constraintTop_toBottomOf="@+id/frame_id_text" />
+
+            <TextView
+                android:id="@+id/previous_frame_id_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/previous_frame_id_text"
+                app:layout_constraintStart_toEndOf="@+id/previous_frame_id_text" />
+
+            <TextView
+                android:id="@+id/time_section_caption"
+                style="@style/header_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/activity_main.time_section_caption"
+                app:layout_constraintStart_toStartOf="@+id/id_section_caption"
+                app:layout_constraintTop_toBottomOf="@+id/previous_frame_id_text" />
+
+            <TextView
+                android:id="@+id/time_value"
+                style="@style/header_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="123123123"
+                app:layout_constraintBottom_toBottomOf="@+id/time_section_caption"
+                app:layout_constraintStart_toEndOf="@+id/time_section_caption"
+                app:layout_constraintTop_toTopOf="@+id/time_section_caption"
+                app:layout_constraintVertical_bias="0.578" />
+
+            <TextView
+                android:id="@+id/gps_section_caption"
+                style="@style/header_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/activity_main.gps_section_caption"
+                app:layout_constraintStart_toStartOf="@+id/time_section_caption"
+                app:layout_constraintTop_toBottomOf="@+id/time_section_caption" />
+
+            <TextView
+                android:id="@+id/speed_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/activity_main.speed_text"
+                app:layout_constraintStart_toStartOf="@+id/gps_section_caption"
+                app:layout_constraintTop_toBottomOf="@+id/gps_section_caption" />
+
+            <TextView
+                android:id="@+id/speed_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/speed_text"
+                app:layout_constraintStart_toEndOf="@+id/speed_text" />
+
+            <TextView
+                android:id="@+id/longitude_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/activity_main.longitude_text"
+                app:layout_constraintStart_toStartOf="@+id/speed_text"
+                app:layout_constraintTop_toBottomOf="@+id/speed_text" />
+
+            <TextView
+                android:id="@+id/longitude_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/longitude_text"
+                app:layout_constraintStart_toEndOf="@+id/longitude_text" />
+
+            <TextView
+                android:id="@+id/latitude_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/activity_main.latitude_text"
+                app:layout_constraintStart_toStartOf="@+id/longitude_text"
+                app:layout_constraintTop_toBottomOf="@+id/longitude_text" />
+
+            <TextView
+                android:id="@+id/latitude_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/latitude_text"
+                app:layout_constraintStart_toEndOf="@+id/latitude_text" />
+
+            <TextView
+                android:id="@+id/accelerometer_section_caption"
+                style="@style/header_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/activity_main.accelerometer_section_caption"
+                app:layout_constraintStart_toStartOf="@+id/gps_section_caption"
+                app:layout_constraintTop_toBottomOf="@+id/latitude_text" />
+
+            <TextView
+                android:id="@+id/full_acceleration_x_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/activity_main.full_acceleration_x_text"
+                app:layout_constraintStart_toStartOf="@+id/accelerometer_section_caption"
+                app:layout_constraintTop_toBottomOf="@+id/accelerometer_section_caption" />
+
+            <TextView
+                android:id="@+id/full_acceleration_x_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/full_acceleration_x_text"
+                app:layout_constraintStart_toEndOf="@+id/full_acceleration_x_text" />
+
+            <TextView
+                android:id="@+id/full_acceleration_y_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/activity_main.full_acceleration_y_text"
+                app:layout_constraintStart_toStartOf="@+id/full_acceleration_x_text"
+                app:layout_constraintTop_toBottomOf="@+id/full_acceleration_x_text" />
+
+            <TextView
+                android:id="@+id/full_acceleration_y_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/full_acceleration_y_text"
+                app:layout_constraintStart_toEndOf="@+id/full_acceleration_y_text" />
+
+            <TextView
+                android:id="@+id/full_acceleration_z_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/activity_main.full_acceleration_z_text"
+                app:layout_constraintStart_toStartOf="@+id/full_acceleration_y_text"
+                app:layout_constraintTop_toBottomOf="@+id/full_acceleration_y_text" />
+
+            <TextView
+                android:id="@+id/full_acceleration_z_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/full_acceleration_z_text"
+                app:layout_constraintStart_toEndOf="@+id/full_acceleration_z_text" />
+
+            <TextView
+                android:id="@+id/gravity_acceleration_x_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/activity_main.gravity_x_text"
+                app:layout_constraintStart_toStartOf="@+id/full_acceleration_z_text"
+                app:layout_constraintTop_toBottomOf="@+id/full_acceleration_z_text" />
+
+            <TextView
+                android:id="@+id/gravity_acceleration_x_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/gravity_acceleration_x_text"
+                app:layout_constraintStart_toEndOf="@+id/gravity_acceleration_x_text" />
+
+            <TextView
+                android:id="@+id/gravity_acceleration_y_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/activity_main.gravity_y_text"
+                app:layout_constraintStart_toStartOf="@+id/gravity_acceleration_x_text"
+                app:layout_constraintTop_toBottomOf="@+id/gravity_acceleration_x_text" />
+
+            <TextView
+                android:id="@+id/gravity_acceleration_y_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/gravity_acceleration_y_text"
+                app:layout_constraintStart_toEndOf="@+id/gravity_acceleration_y_text" />
+
+            <TextView
+                android:id="@+id/gravity_acceleration_z_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/activity_main.gravity_z_text"
+                app:layout_constraintStart_toStartOf="@+id/gravity_acceleration_y_text"
+                app:layout_constraintTop_toBottomOf="@+id/gravity_acceleration_y_text" />
+
+            <TextView
+                android:id="@+id/gravity_acceleration_z_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/gravity_acceleration_z_text"
+                app:layout_constraintStart_toEndOf="@+id/gravity_acceleration_z_text" />
+
+            <TextView
+                android:id="@+id/gyroscope_section_caption"
+                style="@style/header_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/activity_main.gyroscope_section_caption"
+                app:layout_constraintStart_toStartOf="@+id/accelerometer_section_caption"
+                app:layout_constraintTop_toBottomOf="@+id/gravity_acceleration_z_text" />
+
+            <TextView
+                android:id="@+id/rotation_x_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text="@string/activity_main.rotation_x_text"
+                app:layout_constraintStart_toStartOf="@+id/gyroscope_section_caption"
+                app:layout_constraintTop_toBottomOf="@+id/gyroscope_section_caption" />
+
+            <TextView
+                android:id="@+id/rotation_x_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/rotation_x_text"
+                app:layout_constraintStart_toEndOf="@+id/rotation_x_text" />
+
+            <TextView
+                android:id="@+id/rotation_y_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/activity_main.rotation_y_text"
+                app:layout_constraintStart_toStartOf="@+id/rotation_x_text"
+                app:layout_constraintTop_toBottomOf="@+id/rotation_x_text" />
+
+            <TextView
+                android:id="@+id/retation_y_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/rotation_y_text"
+                app:layout_constraintStart_toEndOf="@+id/rotation_y_text" />
+
+            <TextView
+                android:id="@+id/rotation_z_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/activity_main.rotation_z_text"
+                app:layout_constraintStart_toStartOf="@+id/rotation_y_text"
+                app:layout_constraintTop_toBottomOf="@+id/rotation_y_text" />
+
+            <TextView
+                android:id="@+id/rotation_z_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/rotation_z_text"
+                app:layout_constraintStart_toEndOf="@+id/rotation_z_text" />
+
+            <TextView
+                android:id="@+id/angle_speed_x_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/activity_main.angle_speed_x_text"
+                app:layout_constraintStart_toStartOf="@+id/rotation_z_text"
+                app:layout_constraintTop_toBottomOf="@+id/rotation_z_text" />
+
+            <TextView
+                android:id="@+id/angle_speed_x_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/angle_speed_x_text"
+                app:layout_constraintStart_toEndOf="@+id/angle_speed_x_text" />
+
+            <TextView
+                android:id="@+id/angle_speed_y_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/activity_main.angle_speed_y_text"
+                app:layout_constraintStart_toStartOf="@+id/angle_speed_x_text"
+                app:layout_constraintTop_toBottomOf="@+id/angle_speed_x_text" />
+
+            <TextView
+                android:id="@+id/angle_speed_y_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/angle_speed_y_text"
+                app:layout_constraintStart_toEndOf="@+id/angle_speed_y_text" />
+
+            <TextView
+                android:id="@+id/angle_speed_z_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/activity_main.angle_speed_z_text"
+                app:layout_constraintStart_toStartOf="@+id/angle_speed_y_text"
+                app:layout_constraintTop_toBottomOf="@+id/angle_speed_y_text" />
+
+            <TextView
+                android:id="@+id/angle_speed_z_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/angle_speed_z_text"
+                app:layout_constraintStart_toEndOf="@+id/angle_speed_z_text" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 

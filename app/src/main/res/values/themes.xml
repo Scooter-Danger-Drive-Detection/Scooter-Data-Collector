@@ -4,7 +4,7 @@
     <style name="Theme.ScooterDataCollector" parent="android:Theme.Material.Light.NoActionBar" />
 
     <style name="header_text">
-        <item name="android:textSize">28sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
