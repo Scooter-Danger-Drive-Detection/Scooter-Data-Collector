@@ -2,12 +2,16 @@ package com.scooter.datacollector.presentation
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.RadioButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.scooter.datacollector.R
 import com.scooter.datacollector.domain.models.Frame
+import com.scooter.datacollector.domain.models.RideMode
 import com.scooter.datacollector.domain.usecases.CheckSessionStateUsecase
+import com.scooter.datacollector.domain.usecases.StartSessionUsecase
+import org.koin.android.ext.android.get
 import org.koin.java.KoinJavaComponent.get
 
 class MainActivity : AppCompatActivity() {
@@ -26,12 +30,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var gravityAccelerationXText: TextView
     private lateinit var gravityAccelerationYText: TextView
     private lateinit var gravityAccelerationZText: TextView
-    private lateinit var rotationXText: TextView
-    private lateinit var rotationYText: TextView
-    private lateinit var rotationZText: TextView
+    private lateinit var rotationDeltaArray: Array<TextView>
     private lateinit var angleSpeedXText: TextView
     private lateinit var angleSpeedYText: TextView
     private lateinit var angleSpeedZText: TextView
+
+    private lateinit var safeRideRadioButton: RadioButton
+    private lateinit var unsafeRideAloneRadioButton: RadioButton
+    private lateinit var unsafeRideManyPeopleRadioButton: RadioButton
 
     private lateinit var startSessionButton: Button
     private lateinit var stopSessionButton: Button
@@ -53,29 +59,47 @@ class MainActivity : AppCompatActivity() {
         gravityAccelerationXText = findViewById(R.id.gravity_acceleration_x_value)
         gravityAccelerationYText = findViewById(R.id.gravity_acceleration_y_value)
         gravityAccelerationZText = findViewById(R.id.gravity_acceleration_z_value)
-        rotationXText = findViewById(R.id.rotation_x_value)
-        rotationYText = findViewById(R.id.rotation_y_value)
-        rotationZText = findViewById(R.id.rotation_z_value)
+        rotationDeltaArray = listOf<TextView>(
+            findViewById(R.id.rotation_delta_value_0),
+            findViewById(R.id.rotation_delta_value_1),
+            findViewById(R.id.rotation_delta_value_2),
+            findViewById(R.id.rotation_delta_value_3),
+            findViewById(R.id.rotation_delta_value_4),
+            findViewById(R.id.rotation_delta_value_5),
+            findViewById(R.id.rotation_delta_value_6),
+            findViewById(R.id.rotation_delta_value_7),
+            findViewById(R.id.rotation_delta_value_8)
+        ).toTypedArray()
         angleSpeedXText = findViewById(R.id.angle_speed_x_value)
         angleSpeedYText = findViewById(R.id.angle_speed_y_value)
         angleSpeedZText = findViewById(R.id.angle_speed_z_value)
 
-        startSessionButton = findViewById(R.id.start_session_button)
-        stopSessionButton = findViewById(R.id.stop_session_button)
+        safeRideRadioButton = findViewById(R.id.safe_ride_radio_button)
+        unsafeRideAloneRadioButton = findViewById(R.id.unsafe_alone_ride_radio_button)
+        unsafeRideManyPeopleRadioButton = findViewById(R.id.unsafe_many_people_ride_radio_button)
+        safeRideRadioButton.isChecked = true
 
+        startSessionButton = findViewById(R.id.start_session_button)
+        startSessionButton.setOnClickListener {
+            val startSessionUsecase: StartSessionUsecase = get()
+            //TODO startSessionUsecase.execute()
+        }
+
+        stopSessionButton = findViewById(R.id.stop_session_button)
+        //TODO listener
 
         viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
-
         viewModel.currentFrame.observe(this){
             frame -> updateShowingFrame(frame)
         }
+
 
         updateButtonsState()
     }
 
     private fun updateButtonsState(){
-        val checkSession: CheckSessionStateUsecase = get(CheckSessionStateUsecase::class.java)
-        val isSessionGoing = checkSession.execute()
+        //val checkSession: CheckSessionStateUsecase = get(CheckSessionStateUsecase::class.java)
+        val isSessionGoing = false //TODO checkSession.execute()
         startSessionButton.isEnabled = !isSessionGoing
         stopSessionButton.isEnabled = isSessionGoing
     }
@@ -94,10 +118,22 @@ class MainActivity : AppCompatActivity() {
         gravityAccelerationXText.text = frame.accelerometer.gravityAccelerationX.toString()
         gravityAccelerationYText.text = frame.accelerometer.gravityAccelerationY.toString()
         gravityAccelerationZText.text = frame.accelerometer.gravityAccelerationZ.toString()
-        rotationXText.text = frame.gyroscopeData.rotationDeltaX.toString()
-        rotationYText.text = frame.gyroscopeData.rotationDeltaY.toString()
-        rotationYText.text = frame.gyroscopeData.rotationDeltaZ.toString()
-        // TODO добавить отображение угловой скорости
+
+        for (i in rotationDeltaArray.indices){
+            rotationDeltaArray[i].text = frame.gyroscopeData.rotationDelta[i].toString()
+        }
+        angleSpeedXText.text = frame.gyroscopeData.angleSpeedX.toString()
+        angleSpeedYText.text = frame.gyroscopeData.angleSpeedY.toString()
+        angleSpeedZText.text = frame.gyroscopeData.angleSpeedZ.toString()
     }
 
+    private fun getRideMode() : RideMode{
+        if(safeRideRadioButton.isChecked)
+            return RideMode.SAFE
+        if(unsafeRideAloneRadioButton.isChecked)
+            return RideMode.UNSAFE_ALONE
+        if(unsafeRideManyPeopleRadioButton.isChecked)
+            return RideMode.UNSAFE_MANY_PEOPLE
+        throw Exception("Undefined RideMode!!")
+    }
 }

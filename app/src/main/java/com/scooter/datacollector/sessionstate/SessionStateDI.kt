@@ -1,4 +1,9 @@
 package com.scooter.datacollector.sessionstate
 
-class SessionStateDI {
+import org.koin.dsl.module
+
+val SessionStateDI = module{
+    single{
+        SessionController(get(), get())
+    }
 }

@@ -27,11 +27,15 @@
     <string name="activity_main.gravity_z_text">Gravity acceleration Z axis:</string>
 
     <string name="activity_main.gyroscope_section_caption">Gyroscope:</string>
-    <string name="activity_main.rotation_x_text">Rotation X axis:</string>
-    <string name="activity_main.rotation_y_text">Rotation Y axis:</string>
-    <string name="activity_main.rotation_z_text">Rotation Z axis:</string>
+    <string name="activity_main.rotation_delta_text">Rotation delta:</string>
     <string name="activity_main.angle_speed_x_text">Angle speed X axis:</string>
     <string name="activity_main.angle_speed_y_text">Angle speed Y axis:</string>
     <string name="activity_main.angle_speed_z_text">Angle speed Z axis:</string>
+
+    <string name="activity_main.value_placeholder">Undefined</string>
+
+    <string name="activity_main.ride_mode_safe">Safe</string>
+    <string name="activity_main.ride_mode_unsafe_alone">Unsafe alone</string>
+    <string name="activity_main.ride_mode_unsafe_many_people">Many people</string>
     
 </resources>
