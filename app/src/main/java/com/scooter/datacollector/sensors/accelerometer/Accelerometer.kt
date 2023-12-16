@@ -1,13 +1,17 @@
 package com.scooter.datacollector.sensors.accelerometer
 
+import android.content.Context
 import com.scooter.datacollector.domain.models.AccelerationData
 import com.scooter.datacollector.domain.sensors.IAccelerometer
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
+import android.location.LocationManager
 
-class Accelerometer(private val sensorManager: SensorManager) : IAccelerometer, SensorEventListener {
+class Accelerometer(private val context: Context) : IAccelerometer, SensorEventListener {
+    private val sensorManager = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
+
     private var accelerationData = AccelerationData(0.0, 0.0, 0.0)
 
     init {
