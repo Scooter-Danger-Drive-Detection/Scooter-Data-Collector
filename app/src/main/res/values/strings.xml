@@ -6,9 +6,9 @@
     <string name="activity_main.frame_info_caption">Frame data</string>
     
     <string name="activity_main.id_section_caption">Id:</string>
-    <string name="activity_main.session_id_text">SessionId:</string>
-    <string name="activity_main.frame_id_text">FrameId:</string>
-    <string name="activity_main.last_frame_is_text">LastFrameId:</string>
+    <string name="activity_main.session_id_text">Session Id:</string>
+    <string name="activity_main.frame_id_text">Frame Id:</string>
+    <string name="activity_main.last_frame_is_text">Previous frame Id:</string>
     
     <string name="activity_main.time_section_caption">Time:</string>
     
@@ -25,8 +25,12 @@
     <string name="activity_main.gravity_y_text">Gravity acceleration Y axis:</string>
     <string name="activity_main.gravity_z_text">Gravity acceleration Z axis:</string>
 
-<!--    TODO Gyroscope variable description -->
-
     <string name="activity_main.gyroscope_section_caption">Gyroscope:</string>
+    <string name="activity_main.rotation_x_text">Rotation X axis:</string>
+    <string name="activity_main.rotation_y_text">Rotation Y axis:</string>
+    <string name="activity_main.rotation_z_text">Rotation Z axis:</string>
+    <string name="activity_main.angle_speed_x_text">Angle speed X axis:</string>
+    <string name="activity_main.angle_speed_y_text">Angle speed Y axis:</string>
+    <string name="activity_main.angle_speed_z_text">Angle speed Z axis:</string>
     
 </resources>
