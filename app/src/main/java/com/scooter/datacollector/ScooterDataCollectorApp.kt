@@ -2,6 +2,7 @@ package com.scooter.datacollector
 
 import android.app.Application
 import com.scooter.datacollector.data.DataDI
+import com.scooter.datacollector.domain.DomainDI
 import com.scooter.datacollector.presentation.PresentationDI
 import com.scooter.datacollector.sensors.SensorsDI
 import org.koin.android.ext.koin.androidContext
@@ -15,7 +16,7 @@ class ScooterDataCollectorApp : Application() {
         startKoin{
             androidLogger()
             androidContext(this@ScooterDataCollectorApp)
-            modules(DataDI, SensorsDI, PresentationDI)
+            modules(DataDI, SensorsDI, DomainDI, PresentationDI)
         }
     }
 }

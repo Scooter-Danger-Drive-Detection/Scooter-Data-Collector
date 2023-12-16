@@ -6,22 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".presentation.MainActivity">
 
-    <Button
-        android:id="@+id/startSessionBtn"
-        style="@style/header_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/activity_main.start_session_button.text"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
-
     <FrameLayout
         android:id="@+id/frameLayout"
-        android:layout_width="409dp"
-        android:layout_height="638dp"
+        android:layout_width="0dp"
+        android:layout_height="618dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -65,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="TextView"
+                android:text="@string/activity_main.value_placeholder"
                 app:layout_constraintBottom_toBottomOf="@+id/session_id_text"
                 app:layout_constraintStart_toEndOf="@+id/session_id_text" />
 
@@ -83,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="TextView"
+                android:text="@string/activity_main.value_placeholder"
                 app:layout_constraintBottom_toBottomOf="@+id/frame_id_text"
                 app:layout_constraintStart_toEndOf="@+id/frame_id_text" />
 
@@ -92,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="@string/activity_main.last_frame_is_text"
+                android:text="@string/activity_main.previous_frame_is_text"
                 app:layout_constraintStart_toStartOf="@+id/frame_id_text"
                 app:layout_constraintTop_toBottomOf="@+id/frame_id_text" />
 
@@ -101,7 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="TextView"
+                android:text="@string/activity_main.value_placeholder"
                 app:layout_constraintBottom_toBottomOf="@+id/previous_frame_id_text"
                 app:layout_constraintStart_toEndOf="@+id/previous_frame_id_text" />
 
@@ -121,7 +109,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="123123123"
+                android:text="@string/activity_main.value_placeholder"
                 app:layout_constraintBottom_toBottomOf="@+id/time_section_caption"
                 app:layout_constraintStart_toEndOf="@+id/time_section_caption"
                 app:layout_constraintTop_toTopOf="@+id/time_section_caption"
@@ -152,7 +140,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="TextView"
+                android:text="@string/activity_main.value_placeholder"
                 app:layout_constraintBottom_toBottomOf="@+id/speed_text"
                 app:layout_constraintStart_toEndOf="@+id/speed_text" />
 
@@ -170,7 +158,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="TextView"
+                android:text="@string/activity_main.value_placeholder"
                 app:layout_constraintBottom_toBottomOf="@+id/longitude_text"
                 app:layout_constraintStart_toEndOf="@+id/longitude_text" />
 
@@ -188,7 +176,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="TextView"
+                android:text="@string/activity_main.value_placeholder"
                 app:layout_constraintBottom_toBottomOf="@+id/latitude_text"
                 app:layout_constraintStart_toEndOf="@+id/latitude_text" />
 
@@ -217,7 +205,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="TextView"
+                android:text="@string/activity_main.value_placeholder"
                 app:layout_constraintBottom_toBottomOf="@+id/full_acceleration_x_text"
                 app:layout_constraintStart_toEndOf="@+id/full_acceleration_x_text" />
 
@@ -235,7 +223,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="TextView"
+                android:text="@string/activity_main.value_placeholder"
                 app:layout_constraintBottom_toBottomOf="@+id/full_acceleration_y_text"
                 app:layout_constraintStart_toEndOf="@+id/full_acceleration_y_text" />
 
@@ -253,7 +241,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="TextView"
+                android:text="@string/activity_main.value_placeholder"
                 app:layout_constraintBottom_toBottomOf="@+id/full_acceleration_z_text"
                 app:layout_constraintStart_toEndOf="@+id/full_acceleration_z_text" />
 
@@ -271,7 +259,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="TextView"
+                android:text="@string/activity_main.value_placeholder"
                 app:layout_constraintBottom_toBottomOf="@+id/gravity_acceleration_x_text"
                 app:layout_constraintStart_toEndOf="@+id/gravity_acceleration_x_text" />
 
@@ -289,7 +277,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="TextView"
+                android:text="@string/activity_main.value_placeholder"
                 app:layout_constraintBottom_toBottomOf="@+id/gravity_acceleration_y_text"
                 app:layout_constraintStart_toEndOf="@+id/gravity_acceleration_y_text" />
 
@@ -307,7 +295,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="TextView"
+                android:text="@string/activity_main.value_placeholder"
                 app:layout_constraintBottom_toBottomOf="@+id/gravity_acceleration_z_text"
                 app:layout_constraintStart_toEndOf="@+id/gravity_acceleration_z_text" />
 
@@ -322,75 +310,105 @@
                 app:layout_constraintTop_toBottomOf="@+id/gravity_acceleration_z_text" />
 
             <TextView
-                android:id="@+id/rotation_x_text"
+                android:id="@+id/rotation_delta_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                android:text="@string/activity_main.rotation_x_text"
+                android:layout_marginTop="20dp"
+                android:text="@string/activity_main.rotation_delta_text"
                 app:layout_constraintStart_toStartOf="@+id/gyroscope_section_caption"
                 app:layout_constraintTop_toBottomOf="@+id/gyroscope_section_caption" />
 
             <TextView
-                android:id="@+id/rotation_x_value"
+                android:id="@+id/rotation_delta_value_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_main.value_placeholder"
+                app:layout_constraintBottom_toTopOf="@+id/rotation_delta_value_3"
+                app:layout_constraintStart_toStartOf="@+id/rotation_delta_value_3" />
+
+            <TextView
+                android:id="@+id/rotation_delta_value_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_main.value_placeholder"
+                app:layout_constraintBottom_toBottomOf="@+id/rotation_delta_value_0"
+                app:layout_constraintStart_toStartOf="@+id/rotation_delta_value_4" />
+
+            <TextView
+                android:id="@+id/rotation_delta_value_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_main.value_placeholder"
+                app:layout_constraintBottom_toTopOf="@+id/rotation_delta_value_4"
+                app:layout_constraintStart_toStartOf="@+id/rotation_delta_value_5" />
+
+            <TextView
+                android:id="@+id/rotation_delta_value_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="TextView"
-                app:layout_constraintBottom_toBottomOf="@+id/rotation_x_text"
-                app:layout_constraintStart_toEndOf="@+id/rotation_x_text" />
+                android:text="@string/activity_main.value_placeholder"
+                app:layout_constraintBottom_toBottomOf="@+id/rotation_delta_text"
+                app:layout_constraintStart_toEndOf="@+id/rotation_delta_text" />
 
             <TextView
-                android:id="@+id/rotation_y_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/activity_main.rotation_y_text"
-                app:layout_constraintStart_toStartOf="@+id/rotation_x_text"
-                app:layout_constraintTop_toBottomOf="@+id/rotation_x_text" />
-
-            <TextView
-                android:id="@+id/retation_y_value"
+                android:id="@+id/rotation_delta_value_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="TextView"
-                app:layout_constraintBottom_toBottomOf="@+id/rotation_y_text"
-                app:layout_constraintStart_toEndOf="@+id/rotation_y_text" />
+                android:text="@string/activity_main.value_placeholder"
+                app:layout_constraintBottom_toBottomOf="@+id/rotation_delta_value_3"
+                app:layout_constraintStart_toEndOf="@+id/rotation_delta_value_3" />
 
             <TextView
-                android:id="@+id/rotation_z_text"
+                android:id="@+id/rotation_delta_value_5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/activity_main.rotation_z_text"
-                app:layout_constraintStart_toStartOf="@+id/rotation_y_text"
-                app:layout_constraintTop_toBottomOf="@+id/rotation_y_text" />
+                android:layout_marginStart="8dp"
+                android:text="@string/activity_main.value_placeholder"
+                app:layout_constraintBottom_toBottomOf="@+id/rotation_delta_value_4"
+                app:layout_constraintStart_toEndOf="@+id/rotation_delta_value_4" />
 
             <TextView
-                android:id="@+id/rotation_z_value"
+                android:id="@+id/rotation_delta_value_6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="TextView"
-                app:layout_constraintBottom_toBottomOf="@+id/rotation_z_text"
-                app:layout_constraintStart_toEndOf="@+id/rotation_z_text" />
+                android:text="@string/activity_main.value_placeholder"
+                app:layout_constraintStart_toStartOf="@+id/rotation_delta_value_3"
+                app:layout_constraintTop_toBottomOf="@+id/rotation_delta_value_3" />
+
+            <TextView
+                android:id="@+id/rotation_delta_value_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_main.value_placeholder"
+                app:layout_constraintBottom_toBottomOf="@+id/rotation_delta_value_6"
+                app:layout_constraintStart_toStartOf="@+id/rotation_delta_value_4" />
+
+            <TextView
+                android:id="@+id/rotation_delta_value_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_main.value_placeholder"
+                app:layout_constraintBottom_toBottomOf="@+id/rotation_delta_value_7"
+                app:layout_constraintStart_toStartOf="@+id/rotation_delta_value_5" />
 
             <TextView
                 android:id="@+id/angle_speed_x_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/activity_main.angle_speed_x_text"
-                app:layout_constraintStart_toStartOf="@+id/rotation_z_text"
-                app:layout_constraintTop_toBottomOf="@+id/rotation_z_text" />
+                app:layout_constraintStart_toStartOf="@+id/rotation_delta_text"
+                app:layout_constraintTop_toBottomOf="@+id/rotation_delta_text" />
 
             <TextView
                 android:id="@+id/angle_speed_x_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="TextView"
+                android:text="@string/activity_main.value_placeholder"
                 app:layout_constraintBottom_toBottomOf="@+id/angle_speed_x_text"
                 app:layout_constraintStart_toEndOf="@+id/angle_speed_x_text" />
 
@@ -408,7 +426,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="TextView"
+                android:text="@string/activity_main.value_placeholder"
                 app:layout_constraintBottom_toBottomOf="@+id/angle_speed_y_text"
                 app:layout_constraintStart_toEndOf="@+id/angle_speed_y_text" />
 
@@ -426,10 +444,64 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="TextView"
+                android:text="@string/activity_main.value_placeholder"
                 app:layout_constraintBottom_toBottomOf="@+id/angle_speed_z_text"
                 app:layout_constraintStart_toEndOf="@+id/angle_speed_z_text" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
+
+    <Button
+        android:id="@+id/start_session_button"
+        style="@style/header_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/activity_main.start_session_button.text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <Button
+        android:id="@+id/stop_session_button"
+        style="@style/header_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/activity_main.stop_session_button.text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout">
+
+        <RadioButton
+            android:id="@+id/safe_ride_radio_button"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:text="@string/activity_main.ride_mode_safe" />
+
+        <RadioButton
+            android:id="@+id/unsafe_alone_ride_radio_button"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:text="@string/activity_main.ride_mode_unsafe_alone" />
+
+        <RadioButton
+            android:id="@+id/unsafe_many_people_ride_radio_button"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:text="@string/activity_main.ride_mode_unsafe_many_people" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
