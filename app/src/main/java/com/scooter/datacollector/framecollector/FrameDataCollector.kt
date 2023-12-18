@@ -27,9 +27,9 @@ class FrameDataCollector(
 
     private var timer: Timer? = null
     private var currentFrame: Int = 0
-    private var currentSessionId = 0
+    private var currentSessionId = 0L
     private val frameUpdatedCallbacks: MutableList<(Frame) -> Unit> = mutableListOf()
-    override fun startFrameDataCollection(sessionId: Int){
+    override fun startFrameDataCollection(sessionId: Long){
         currentFrame = 0
         currentSessionId = sessionId
 

@@ -3,7 +3,7 @@ package com.scooter.datacollector.domain
 import com.scooter.datacollector.domain.models.Frame
 
 interface IFrameDataCollector {
-    public fun startFrameDataCollection(sessionId: Int)
+    public fun startFrameDataCollection(sessionId: Long)
     public fun stopFrameDataCollection()
     public fun subscribeOnFrameUpdate(callback: (Frame) -> Unit)
     public fun unsubscribeOnFrameUpdate(callback: (Frame) -> Unit)

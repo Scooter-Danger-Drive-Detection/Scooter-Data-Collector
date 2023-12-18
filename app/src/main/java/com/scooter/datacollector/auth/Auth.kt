@@ -10,18 +10,18 @@ class Auth(val context: Context) : IAuth{
         private const val AUTH_PREFERENCES = "com.scooter.datacollector.AUTH"
         private const val USER_ID = "USER_ID"
     }
-    override fun getCurrentUserId(): Int {
+    override fun getCurrentUserId(): Long {
         val userId = getUserId()
-        if(userId == -1){
+        if(userId == -1L){
             with(context.getSharedPreferences(AUTH_PREFERENCES, Context.MODE_PRIVATE).edit()){
-                putInt(USER_ID, Random(Date().time).nextInt())
+                putLong(USER_ID, Date().time)
                 apply()
             }
         }
-        return if(userId != -1) userId else getUserId()
+        return if(userId != -1L) userId else getUserId()
     }
 
     private fun getUserId() =
-        context.getSharedPreferences(AUTH_PREFERENCES, Context.MODE_PRIVATE).getInt(USER_ID, -1)
+        context.getSharedPreferences(AUTH_PREFERENCES, Context.MODE_PRIVATE).getLong(USER_ID, -1)
 
 }

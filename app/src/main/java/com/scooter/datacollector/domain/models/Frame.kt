@@ -2,7 +2,7 @@ package com.scooter.datacollector.domain.models
 
 data class Frame(
     val frameId : Int,
-    val sessionId: Int,
+    val sessionId: Long,
     val lastFrameId: Int,
     val time: Long,
     val gps : GpsData,

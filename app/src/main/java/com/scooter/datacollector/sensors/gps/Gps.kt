@@ -18,8 +18,9 @@ class Gps(private val context: Context) : IGps, LocationListener {
     private var gpsData: GpsData = GpsData(0.0, 0.0, 0.0)
 
     init {
-        if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
-            throw Exception()
+//        if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
+//            Toast.makeText(context, "Надо включить GPS!", Toast.LENGTH_SHORT).show()
+//            throw Exception()
         if(ContextCompat.checkSelfPermission(context, ACCESS_FINE_LOCATION) == PERMISSION_GRANTED){
             android.os.Handler(context.mainLooper).post{
                 locationManager.requestLocationUpdates(LocationManager.FUSED_PROVIDER, 0L, 0f, this)
