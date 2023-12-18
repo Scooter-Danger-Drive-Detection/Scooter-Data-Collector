@@ -3,6 +3,7 @@ package com.scooter.datacollector.data
 import androidx.loader.content.AsyncTaskLoader
 import com.scooter.datacollector.data.local.LocalDatabase
 import com.scooter.datacollector.data.local.entities.SessionEntity
+import com.scooter.datacollector.domain.models.RideMode
 import com.scooter.datacollector.domain.models.Session
 import com.scooter.datacollector.domain.repositories.ISessionRepository
 import java.util.Date
@@ -18,7 +19,7 @@ class SessionRepository(private val localDatabase: LocalDatabase) : ISessionRepo
             localDatabase.sessionDao().insert( SessionEntity(
                     session.id,
                     session.usedId,
-                    session.rideMode
+                    com.scooter.datacollector.data.local.entities.RideMode.valueOf(session.rideMode.name)
                 )
             )
         }.start()

@@ -6,6 +6,7 @@ import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
+import android.util.Log
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.scooter.datacollector.domain.models.GpsData
@@ -34,6 +35,7 @@ class Gps(private val context: Context) : IGps, LocationListener {
 
     override fun onLocationChanged(location: Location) {
         gpsData = GpsData(location.speed.toDouble(), location.latitude, location.longitude)
+        Log.d(Gps::class.java.name, "Location updated. Current Location is " + gpsData.speed.toString() + ' ' + gpsData.latitude.toString() + ' ' + gpsData.longitude.toString())
     }
 
     override fun getGpsData() = gpsData

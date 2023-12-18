@@ -11,4 +11,10 @@ interface FrameDao {
     fun insertFrame(frameEntity: FrameEntity)
     @Query("SELECT * FROM frames")
     fun getAll(): List<FrameEntity>
+
+    @Query("SELECT * FROM frames WHERE SessionId = :sessionId")
+    fun getFramesBySessionId(sessionId: Long) : List<FrameEntity>
+
+    @Query("SELECT COUNT(*) AS asd FROM frames WHERE SessionId = :sessionId")
+    fun getFramesCountBySessionId(sessionId: Long): Int
 }

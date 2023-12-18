@@ -460,6 +460,14 @@
                 app:layout_constraintBottom_toBottomOf="@+id/angle_speed_z_text"
                 app:layout_constraintStart_toEndOf="@+id/angle_speed_z_text" />
 
+            <Button
+                android:id="@+id/server_action_button"
+                android:layout_width="125dp"
+                android:layout_height="105dp"
+                android:text="Постучаться на сервер"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 

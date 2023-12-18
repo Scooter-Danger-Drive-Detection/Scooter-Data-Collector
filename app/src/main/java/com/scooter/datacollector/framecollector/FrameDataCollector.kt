@@ -22,7 +22,7 @@ class FrameDataCollector(
     private val frameRepository: IFrameRepository
 ) : IFrameDataCollector {
     companion object{
-        const val DELAY_BETWEEN_FRAMES_MS: Long = 100L
+        const val DELAY_BETWEEN_FRAMES_MS: Long = 1000L
     }
 
     private var timer: Timer? = null

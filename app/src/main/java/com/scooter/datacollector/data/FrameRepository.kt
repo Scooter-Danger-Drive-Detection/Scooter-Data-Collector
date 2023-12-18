@@ -35,7 +35,5 @@ class FrameRepository(private val localDatabase: LocalDatabase) : IFrameReposito
             frame.gyroscopeData.angleSpeedY,
             frame.gyroscopeData.angleSpeedZ
         ))
-
-        Log.d(FrameRepository::class.java.name, localDatabase.frameDao().getAll().count().toString())
     }
 }

@@ -6,6 +6,7 @@ import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.TextView
@@ -16,6 +17,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.scooter.datacollector.R
+import com.scooter.datacollector.data.DataSynchronizer
+import com.scooter.datacollector.data.local.LocalDatabase
 import com.scooter.datacollector.domain.models.Frame
 import com.scooter.datacollector.domain.models.RideMode
 import com.scooter.datacollector.domain.usecases.CheckSessionStateUsecase
@@ -54,6 +57,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var unsafeRideAloneRadioButton: RadioButton
     private lateinit var unsafeRideManyPeopleRadioButton: RadioButton
 
+    private lateinit var serverActionButton: Button
     private lateinit var startSessionButton: Button
     private lateinit var stopSessionButton: Button
 
@@ -117,6 +121,13 @@ class MainActivity : AppCompatActivity() {
             updateButtonsState()
         }
 
+        serverActionButton = findViewById(R.id.server_action_button)
+        serverActionButton.setOnClickListener {
+            Thread{
+                DataSynchronizer(get(), get(), get()).trySynchronizeAll()
+            }.start()
+        }
+
         viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
         viewModel.currentFrame.observe(this){
             frame -> updateShowingFrame(frame)
@@ -128,6 +139,10 @@ class MainActivity : AppCompatActivity() {
         val isSessionGoing = checkSession.execute()
         startSessionButton.isEnabled = !isSessionGoing
         stopSessionButton.isEnabled = isSessionGoing
+        safeRideRadioButton.isEnabled = !isSessionGoing
+        unsafeRideAloneRadioButton.isEnabled = !isSessionGoing
+        unsafeRideManyPeopleRadioButton.isEnabled = !isSessionGoing
+        serverActionButton.isEnabled = !isSessionGoing
     }
 
     private fun updateShowingFrame(frame: Frame){

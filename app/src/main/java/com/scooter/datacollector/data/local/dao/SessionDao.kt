@@ -12,4 +12,7 @@ interface SessionDao {
 
     @Query("SELECT MAX(id) FROM sessions")
     fun nextSessionId(): Int
+
+    @Query("SELECT * FROM sessions")
+    fun getAll(): List<SessionEntity>
 }
