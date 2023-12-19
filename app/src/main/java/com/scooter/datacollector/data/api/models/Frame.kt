@@ -1,7 +1,9 @@
 package com.scooter.datacollector.data.api.models
 
 data class Frame(
-    val ID: Id,
+    val FrameID: Int,
+    val SessionID: Long,
+    val PreviousFrameID: Long,
     val Time: Long,
     val GPS: Gps,
     val Accelerometer: Accelerometer,

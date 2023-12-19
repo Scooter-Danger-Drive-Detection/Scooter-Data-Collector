@@ -3,6 +3,9 @@ package com.scooter.datacollector.presentation
 import android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
+import android.Manifest.permission.ACCESS_NETWORK_STATE
+import android.Manifest.permission.INTERNET
+import android.content.Intent
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Build
 import android.os.Bundle
@@ -61,18 +64,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var startSessionButton: Button
     private lateinit var stopSessionButton: Button
 
-    private val requestPermissionLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()){
-            isGranted: Boolean ->
-                if (!isGranted){
-                    Toast.makeText(this, "You need to allow all permissions!", Toast.LENGTH_SHORT).show()
-                }
-        }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        checkAndUpdatePermissions()
 
         sessionIdText = findViewById(R.id.session_id_value)
         frameIdText = findViewById(R.id.frame_id_value)
@@ -123,8 +119,12 @@ class MainActivity : AppCompatActivity() {
 
         serverActionButton = findViewById(R.id.server_action_button)
         serverActionButton.setOnClickListener {
+            serverActionButton.isEnabled = false
             Thread{
                 DataSynchronizer(get(), get(), get()).trySynchronizeAll()
+                Handler(mainLooper).post{
+                    serverActionButton.isEnabled = true
+                }
             }.start()
         }
 
@@ -177,22 +177,4 @@ class MainActivity : AppCompatActivity() {
             return RideMode.UNSAFE_MANY_PEOPLE
         throw Exception("Undefined RideMode!!")
     }
-
-    private fun checkAndUpdatePermissions(){
-        val notAllowedPermissions = mutableListOf<String>()
-        if(checkSelfPermission(ACCESS_COARSE_LOCATION) != PERMISSION_GRANTED){
-            notAllowedPermissions.add(ACCESS_COARSE_LOCATION)
-        }
-        if(checkSelfPermission(ACCESS_FINE_LOCATION) != PERMISSION_GRANTED){
-            notAllowedPermissions.add(ACCESS_FINE_LOCATION)
-        }
-        if(checkSelfPermission(ACCESS_BACKGROUND_LOCATION) != PERMISSION_GRANTED && Build.VERSION.SDK_INT >= 29){
-            notAllowedPermissions.add(ACCESS_BACKGROUND_LOCATION)
-        }
-
-        for(index in notAllowedPermissions.indices)
-            requestPermissionLauncher.launch(notAllowedPermissions[index])
-    }
-
-
 }

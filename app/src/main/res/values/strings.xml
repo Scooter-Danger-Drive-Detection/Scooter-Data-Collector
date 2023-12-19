@@ -1,23 +1,33 @@
 <resources>
-    <string name="app_name">ScooterDataCollector</string>
+    <string name="app_name">Scooter Data Collector</string>
 
-    
+    <string name="permissions_activity.caption">Разрешения для приложения</string>
+    <string name="permissions_activity.ACCESS_COARSE_LOCATION">ACCESS_COARSE_LOCATION</string>
+    <string name="permissions_activity.ACCESS_FINE_LOCATION">ACCESS_FINE_LOCATION</string>
+    <string name="permissions_activity.ACCESS_BACKGROUND_LOCATION">ACCESS_BACKGROUND_LOCATION</string>
+    <string name="permissions_activity.INTERNET">INTERNET</string>
+    <string name="permissions_activity.ACCESS_NETWORK_STATE">ACCESS_NETWORK_STATE</string>
+
+    <string name="permissions_activity.permission_granted">Granted</string>
+    <string name="permissions_activity.permission_notGranted">Not Granted</string>
+    <string name="permission_activity.request_permissions_text">Разрешить разрешения</string>
+
     <string name="activity_main.start_session_button.text">Start Session</string>
     <string name="activity_main.stop_session_button.text">Stop session</string>
     <string name="activity_main.frame_info_caption">Frame data</string>
-    
+
     <string name="activity_main.id_section_caption">Id:</string>
     <string name="activity_main.session_id_text">Session Id:</string>
     <string name="activity_main.frame_id_text">Frame Id:</string>
     <string name="activity_main.previous_frame_is_text">Previous frame Id:</string>
-    
+
     <string name="activity_main.time_section_caption">Time:</string>
-    
+
     <string name="activity_main.gps_section_caption">GPS:</string>
     <string name="activity_main.speed_text">Speed:</string>
     <string name="activity_main.longitude_text">Longitude:</string>
     <string name="activity_main.latitude_text">Latitude:</string>
-    
+
     <string name="activity_main.accelerometer_section_caption">Accelerometer:</string>
     <string name="activity_main.full_acceleration_x_text">Linear acceleration X axis:</string>
     <string name="activity_main.full_acceleration_y_text">Linear acceleration Y axis:</string>
@@ -37,5 +47,5 @@
     <string name="activity_main.ride_mode_safe">Safe</string>
     <string name="activity_main.ride_mode_unsafe_alone">Unsafe alone</string>
     <string name="activity_main.ride_mode_unsafe_many_people">Many people</string>
-    
+
 </resources>
