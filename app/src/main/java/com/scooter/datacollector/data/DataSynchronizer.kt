@@ -9,19 +9,20 @@ import com.scooter.datacollector.data.api.models.Frame
 import com.scooter.datacollector.data.api.models.Gps
 import com.scooter.datacollector.data.api.models.Gyroscope
 import com.scooter.datacollector.data.api.models.Session
-import com.scooter.datacollector.data.api.requestModels.GetFramesCountInSessionRequest
 import com.scooter.datacollector.data.api.requestModels.SaveSessionRequest
 import com.scooter.datacollector.data.local.LocalDatabase
-import com.scooter.datacollector.data.local.entities.SessionEntity
+import com.scooter.datacollector.domain.IDataSynchronizer
+import com.scooter.datacollector.domain.models.RideMode
 import java.lang.Exception
 
-class DataSynchronizer(private val context: Context, private val localDatabase: LocalDatabase, private val sessionController: SessionController) {
+class DataSynchronizer(private val context: Context, private val localDatabase: LocalDatabase, private val sessionController: SessionController) :
+    IDataSynchronizer {
 
-    fun trySynchronizeAll(){
+    override fun synchronizeAll(){
         val allSessions = localDatabase.sessionDao().getAll()
         for (session in allSessions){
             try {
-                trySynchronizeSession(session)
+                synchronizeSession(com.scooter.datacollector.domain.models.Session(session.id, session.userId, RideMode.valueOf(session.rideMode.name)))
             }
             catch (e: Exception){
                 android.os.Handler(context.mainLooper).post {
@@ -31,21 +32,15 @@ class DataSynchronizer(private val context: Context, private val localDatabase: 
             }
         }
         Log.d(DataSynchronizer::class.java.name, "синхронизация завершена")
-        android.os.Handler(context.mainLooper).post {
-            Toast.makeText(context, "синхронизация завершена", Toast.LENGTH_SHORT).show()
-        }
-
     }
 
-    private fun trySynchronizeSession(session:SessionEntity){
+    override fun synchronizeSession(session:com.scooter.datacollector.domain.models.Session){
         val framesFound = sessionController.getFramesCountInSession(
-
-                Session(
-                    session.id,
-                    session.userId,
-                    session.rideMode.ordinal
-                )
-
+            Session(
+                session.id,
+                session.userId,
+                session.rideMode.ordinal
+            )
         ).execute().body()!!
         val framesStored = localDatabase.frameDao().getFramesCountBySessionId(session.id)
 
@@ -55,7 +50,8 @@ class DataSynchronizer(private val context: Context, private val localDatabase: 
 
         val localFrames = localDatabase.frameDao().getFramesBySessionId(session.id)
         val apiFrames = mutableListOf<Frame>()
-        for (frame in localFrames) {
+        for (i in framesFound..<localFrames.size) {
+            val frame = localFrames[i]
             apiFrames.add(
                 Frame(
                     FrameID = frame.id,
@@ -118,20 +114,15 @@ class DataSynchronizer(private val context: Context, private val localDatabase: 
         Log.d(DataSynchronizer::class.java.name, "синхронизация сессии " + session.id.toString()+ ", " + apiFrames.size)
 
         apiFrames.clear()
-        android.os.Handler(context.mainLooper).post{
-            Toast.makeText(context, "синхронизация сессии " + session.id.toString()+ ", количество кадров " + localFrames.size + " завершена", Toast.LENGTH_SHORT).show()
-            Log.d(DataSynchronizer::class.java.name, "синхронизация сессии " + session.id.toString()+ ", количество кадров " + localFrames.size + " завершена")
-        }
+        Log.d(DataSynchronizer::class.java.name, "синхронизация сессии " + session.id.toString()+ ", количество кадров " + localFrames.size + " завершена")
     }
 
     private fun saveFramesBatch(session: Session, frames: List<Frame>){
-
-            sessionController.saveSession(
-                SaveSessionRequest(
-                    session,
-                    frames
-                )
-            ).execute()
-
+        sessionController.saveSession(
+            SaveSessionRequest(
+                session,
+                frames
+            )
+        ).execute()
     }
 }

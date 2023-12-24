@@ -48,4 +48,5 @@
     <string name="activity_main.ride_mode_unsafe_alone">Unsafe alone</string>
     <string name="activity_main.ride_mode_unsafe_many_people">Many people</string>
 
+    <string name="activity_main.ride_safety">Безопасность поездки:</string>>
 </resources>

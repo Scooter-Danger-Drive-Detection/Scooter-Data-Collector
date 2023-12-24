@@ -17,7 +17,7 @@ class SessionController(private val auth: IAuth, private val sessionRepository: 
     override fun startSession(rideMode: RideMode) {
         currentSession = Session(
             id = sessionRepository.getIdForNewSession(),
-            usedId = auth.getCurrentUserId(),
+            userId = auth.getCurrentUserId(),
             rideMode = rideMode,
         )
         sessionRepository.createSession(currentSession!!)

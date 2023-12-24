@@ -1,35 +1,20 @@
 package com.scooter.datacollector.presentation
 
-import android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
-import android.Manifest.permission.ACCESS_COARSE_LOCATION
-import android.Manifest.permission.ACCESS_FINE_LOCATION
-import android.Manifest.permission.ACCESS_NETWORK_STATE
-import android.Manifest.permission.INTERNET
-import android.content.Intent
-import android.content.pm.PackageManager.PERMISSION_GRANTED
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.result.ActivityResultCallback
-import androidx.activity.result.contract.ActivityResultContract
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.scooter.datacollector.R
-import com.scooter.datacollector.data.DataSynchronizer
-import com.scooter.datacollector.data.local.LocalDatabase
 import com.scooter.datacollector.domain.models.Frame
 import com.scooter.datacollector.domain.models.RideMode
 import com.scooter.datacollector.domain.usecases.CheckSessionStateUsecase
 import com.scooter.datacollector.domain.usecases.EndSessionUsecase
 import com.scooter.datacollector.domain.usecases.StartSessionUsecase
+import com.scooter.datacollector.domain.usecases.SynchronizeAllUsecase
 import org.koin.android.ext.android.get
-import java.lang.Math.round
-import kotlin.math.roundToInt
 
 class MainActivity : AppCompatActivity() {
     companion object{
@@ -56,6 +41,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var angleSpeedYText: TextView
     private lateinit var angleSpeedZText: TextView
 
+    private lateinit var safetyRideText: TextView
+
+    private lateinit var testRideRadioButton: RadioButton
     private lateinit var safeRideRadioButton: RadioButton
     private lateinit var unsafeRideAloneRadioButton: RadioButton
     private lateinit var unsafeRideManyPeopleRadioButton: RadioButton
@@ -98,16 +86,20 @@ class MainActivity : AppCompatActivity() {
         angleSpeedYText = findViewById(R.id.angle_speed_y_value)
         angleSpeedZText = findViewById(R.id.angle_speed_z_value)
 
+        safetyRideText = findViewById(R.id.ride_safety_value)
+
+        testRideRadioButton = findViewById(R.id.test_ride_radio_button)
         safeRideRadioButton = findViewById(R.id.safe_ride_radio_button)
         unsafeRideAloneRadioButton = findViewById(R.id.unsafe_alone_ride_radio_button)
         unsafeRideManyPeopleRadioButton = findViewById(R.id.unsafe_many_people_ride_radio_button)
-        safeRideRadioButton.isChecked = true
+        testRideRadioButton.isChecked = true
 
         startSessionButton = findViewById(R.id.start_session_button)
         startSessionButton.setOnClickListener {
             val startSessionUsecase: StartSessionUsecase = get()
             startSessionUsecase.execute(getRideMode())
             updateButtonsState()
+            viewModel.sessionStarted()
         }
 
         stopSessionButton = findViewById(R.id.stop_session_button)
@@ -115,22 +107,28 @@ class MainActivity : AppCompatActivity() {
             val endSessionUsecase: EndSessionUsecase = get()
             endSessionUsecase.execute()
             updateButtonsState()
+            viewModel.sessionEnded()
         }
 
         serverActionButton = findViewById(R.id.server_action_button)
         serverActionButton.setOnClickListener {
             serverActionButton.isEnabled = false
-            Thread{
-                DataSynchronizer(get(), get(), get()).trySynchronizeAll()
+            val syncAll: SynchronizeAllUsecase = get()
+            syncAll.execute({
                 Handler(mainLooper).post{
                     serverActionButton.isEnabled = true
                 }
-            }.start()
+            }, {})
+
         }
 
         viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
+        viewModel.attachActivity(this)
         viewModel.currentFrame.observe(this){
             frame -> updateShowingFrame(frame)
+        }
+        viewModel.rideSafety.observe(this){
+            safetyRideText.text = it.toString()
         }
     }
 
@@ -175,6 +173,8 @@ class MainActivity : AppCompatActivity() {
             return RideMode.UNSAFE_ALONE
         if(unsafeRideManyPeopleRadioButton.isChecked)
             return RideMode.UNSAFE_MANY_PEOPLE
+        if(testRideRadioButton.isChecked)
+            return RideMode.TEST_RIDE
         throw Exception("Undefined RideMode!!")
     }
 }
